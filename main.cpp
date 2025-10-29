@@ -1,6 +1,3 @@
-//
-// Created by Manju Muralidharan on 10/19/25.
-//
 #include <iostream>
 #include <fstream>
 #include <stack>
@@ -98,7 +95,17 @@ int buildEncodingTree(int nextFree) {
     //    - Set left/right pointers
     //    - Push new parent index back into the heap
     // 4. Return the index of the last remaining node (root)
-    return -1; // placeholder
+    MinHeap* heap = new MinHeap();
+    heap->push(nextFree, weightArr);
+    while (heap.size > 1) {
+        int first = heap -> pop(weightArr);
+        int second = heap -> pop(weightArr);
+        int parent = first + second;
+        heap -> push(parent, weightArr);
+        return (heap[heap.size]);
+    }
+
+
 }
 
 // Step 4: Use an STL stack to generate codes
